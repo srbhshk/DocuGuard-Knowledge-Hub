@@ -1,6 +1,4 @@
-from fastapi.testclient import TestClient
-
-def test_query_endpoint_returns_answer_and_citations(test_client: TestClient) -> None:
+def test_query_endpoint_returns_answer_and_citations(test_client) -> None:
     response = test_client.post(
         "/api/v1/query",
         json={"query": "DocuGuard", "corpus_text": "DocuGuard is a secure internal knowledge hub."},

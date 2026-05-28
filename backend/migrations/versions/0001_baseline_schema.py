@@ -5,8 +5,8 @@ Revises:
 Create Date: 2026-05-28
 """
 
-from alembic import op
 import sqlalchemy as sa
+from alembic import op
 
 # revision identifiers, used by Alembic.
 revision = "0001_baseline_schema"
@@ -37,7 +37,12 @@ def upgrade() -> None:
         sa.Column("id", sa.Integer(), primary_key=True),
         sa.Column("collection_id", sa.Integer(), nullable=False),
         sa.Column("title", sa.String(length=255), nullable=False),
-        sa.Column("content_type", sa.String(length=64), nullable=False, server_default="text/plain"),
+        sa.Column(
+            "content_type",
+            sa.String(length=64),
+            nullable=False,
+            server_default="text/plain",
+        ),
         sa.Column("storage_path", sa.String(length=500), nullable=False),
         sa.ForeignKeyConstraint(["collection_id"], ["collections.id"], ondelete="CASCADE"),
     )

@@ -20,7 +20,7 @@ jobs:
           ruff check backend
           black --check backend
       - name: Test backend
-        run: pytest backend/tests
+        run: PYTHONPATH=backend python -m pytest backend/tests
 
   frontend:
     runs-on: ubuntu-latest
