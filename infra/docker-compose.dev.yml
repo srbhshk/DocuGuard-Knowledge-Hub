@@ -1,0 +1,17 @@
+services:
+  backend:
+    build:
+      context: ../backend
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ../backend:/app
+    working_dir: /app
+
+  frontend:
+    build:
+      context: ../frontend
+    command: npm run dev -- --host 0.0.0.0 --port 5173
+    volumes:
+      - ../frontend:/app
+      - /app/node_modules
+    working_dir: /app
